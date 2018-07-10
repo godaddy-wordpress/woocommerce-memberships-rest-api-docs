@@ -237,10 +237,13 @@
             <a href="#user-memberships" class="toc-h1 toc-link" data-title="User Memberships">User Memberships</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-user-memberships" class="toc-h2 toc-link" data-title="Get User Memberships">Get User Memberships</a>
+                    <a href="#the-user-membership" class="toc-h2 toc-link" data-title="The User Membership">The User Membership</a>
                   </li>
                   <li>
-                    <a href="#get-user-membership" class="toc-h2 toc-link" data-title="Get User Membership">Get User Membership</a>
+                    <a href="#get-all-user-memberships" class="toc-h2 toc-link" data-title="Get All User Memberships">Get All User Memberships</a>
+                  </li>
+                  <li>
+                    <a href="#get-one-user-membership" class="toc-h2 toc-link" data-title="Get One User Membership">Get One User Membership</a>
                   </li>
               </ul>
           </li>
@@ -248,10 +251,13 @@
             <a href="#membership-plans" class="toc-h1 toc-link" data-title="Membership Plans">Membership Plans</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-membership-plans" class="toc-h2 toc-link" data-title="Get Membership Plans">Get Membership Plans</a>
+                    <a href="#the-membership-plan" class="toc-h2 toc-link" data-title="The Membership Plan">The Membership Plan</a>
                   </li>
                   <li>
-                    <a href="#get-membership-plan" class="toc-h2 toc-link" data-title="Get Membership Plan">Get Membership Plan</a>
+                    <a href="#get-all-membership-plans" class="toc-h2 toc-link" data-title="Get All Membership Plans">Get All Membership Plans</a>
+                  </li>
+                  <li>
+                    <a href="#get-one-membership-plan" class="toc-h2 toc-link" data-title="Get One Membership Plan">Get One Membership Plan</a>
                   </li>
               </ul>
           </li>
@@ -261,7 +267,7 @@
       </ul>
         <ul class="toc-footer">
             <li><a href='https://woocommerce.com/products/woocommerce-memberships/'>Get WooCommerce Memberships</a></li>
-            <li><a href='https://docs.woocommerce.com/document/woocommerce-memberships/'>WooCommerce Memberships Documentation</a></li>
+            <li><a href='https://docs.woocommerce.com/document/woocommerce-memberships/'>Plugin Documentation</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
@@ -284,10 +290,120 @@
 
 <p>Follow instructions from the <a href="https://woocommerce.github.io/woocommerce-rest-api-docs/#authentication">WooCommerce core REST API Authentication chapter</a> for authentication guidelines.</p>
 <h1 id='discovery'>Discovery</h1><h2 id='available-routes'>Available Routes</h2>
-<p>This endpoint lists all routes, along with supported HTTP methods for each, made available by WooCommerce Memberships.</p>
+<p><strong><code>/memberships</code></strong></p>
+
+<p>The memberships root endpoint lists all routes, along with supported HTTP methods for each, made available by WooCommerce Memberships.</p>
 <h3 id='http-request'>HTTP REQUEST</h3>
 <p><code>GET http://example.com/wp-json/wc/v2/memberships</code></p>
-<h1 id='user-memberships'>User Memberships</h1><h2 id='get-user-memberships'>Get User Memberships</h2><pre class="highlight php tab-php"><code>// TODO
+<h1 id='user-memberships'>User Memberships</h1><h2 id='the-user-membership'>The User Membership</h2>
+<p>A user membership is created when a customer gets access to a membership plan, therefore all user memberships are linked to one user and one membership plan only. Also, a membership has a status and a start date.  </p>
+<h3 id='data-structure'>Data Structure</h3>
+<p>A user membership has the following data structure in the REST API:</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int</code></td>
+<td>The unique identifier (integer) of the user membership.</td>
+</tr>
+<tr>
+<td><code>customer_id</code></td>
+<td><code>int</code></td>
+<td>The unique identifier (integer) of the customer that owns the membership.</td>
+</tr>
+<tr>
+<td><code>plan_id</code></td>
+<td><code>int</code></td>
+<td>The unique identifier (integer) of the membership plan the membership is for.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>The current status (string) of the user membership.</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><code>int&#124;null</code></td>
+<td>The unique identifier (integer) of the order that may have granted access to the matching membership plan. If the user membership is not linked to an order, it will return <em><code>null</code></em>.</td>
+</tr>
+<tr>
+<td><code>subcription_id</code></td>
+<td><code>int&#124;null</code></td>
+<td>The unique identifier (integer) of a subscription that may be linked to the user membership. This property will exist only if the site is running WooCommerce Subscriptions alongside with Memberships. If there is no link to a subscription, the value will be <em><code>null</code></em>.</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><code>int&#124;null</code></td>
+<td>The unique identifier (integer) of a product that may have granted access to the matching membership plan. If the user membership is not linked to a product, it will return <em><code>null</code></em>.</td>
+</tr>
+<tr>
+<td><code>date_created</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the user membership object was created, in the local timezone. This does not necessarily match with the start date.</td>
+</tr>
+<tr>
+<td><code>date_created_gmt</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the user membership object was created, in UTC. This does not necessarily match with the start date.</td>
+</tr>
+<tr>
+<td><code>start_date</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the membership starts, in the local timezone.</td>
+</tr>
+<tr>
+<td><code>start_date_gmt</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the membership starts, in UTC.</td>
+</tr>
+<tr>
+<td><code>end_date</code></td>
+<td><code>datetime&#124;null</code></td>
+<td>The date (in Atom format) when the ends, in the local timezone. This is <code>null</code> if the membership doesn&#39;t have an end date.</td>
+</tr>
+<tr>
+<td><code>end_date_gmt</code></td>
+<td><code>datetime&#124;null</code></td>
+<td>The date (in Atom format) when the ends, in UTC. This is <code>null</code> if the membership doesn&#39;t have an end date.</td>
+</tr>
+<tr>
+<td><code>paused_date</code></td>
+<td><code>datetime&#124;null</code></td>
+<td>The date (in Atom format) when the membership was last paused, in the local timezone. This is <code>null</code> if the membership was never paused. The value is not removed if the membership changes status.</td>
+</tr>
+<tr>
+<td><code>paused_date_gmt</code></td>
+<td><code>datetime&#124;null</code></td>
+<td>The date (in Atom format) when the membership was last paused, in UTC. This is <code>null</code> if the membership was never paused. The value is not removed if the membership changes status.</td>
+</tr>
+<tr>
+<td><code>cancelled_date</code></td>
+<td><code>datetime&#124;null</code></td>
+<td>The date (in Atom format) when the membership was cancelled, in the local timezone. This is <code>null</code> if the membership was not cancelled.</td>
+</tr>
+<tr>
+<td><code>cancelled_date_gmt</code></td>
+<td><code>datetime&#124;null</code></td>
+<td>The date (in Atom format) when the membership was cancelled, in UTC. This is <code>null</code> if the membership was not cancelled.</td>
+</tr>
+<tr>
+<td><code>meta_data</code></td>
+<td><code>array</code></td>
+<td>Holds any WordPress meta data set on the membership. Each array item has an <code>id</code> (integer), a <code>key</code> (string) and a <code>value</code> (either a boolean, an integer, or string, or serialized data).</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>array</code></td>
+<td>An array of items linking to related objects accessible through the REST API.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-user-memberships'>Get All User Memberships</h2><pre class="highlight php tab-php"><code>// TODO
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
 </code></pre>
 <blockquote>
@@ -332,6 +448,8 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
+<p><strong><code>memberships/members</code></strong></p>
+
 <p>This endpoint retrieves all user memberships.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://example.com/api/wc/v2/memberships/members</code></p>
@@ -339,7 +457,7 @@
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Value</th>
+<th>Type</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
@@ -385,7 +503,7 @@
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Value</th>
+<th>Type</th>
 <th>Default</th>
 <th>Description</th>
 </tr>
@@ -421,7 +539,7 @@
 <td>Ensure that the specified user memberships with given ID (integer) or IDs (array of integers) will be included in the results, if found.</td>
 </tr>
 </tbody></table>
-<h2 id='get-user-membership'>Get User Membership</h2><pre class="highlight php tab-php"><code>// TODO
+<h2 id='get-one-user-membership'>Get One User Membership</h2><pre class="highlight php tab-php"><code>// TODO
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
 </code></pre>
 <blockquote>
@@ -464,6 +582,8 @@
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><strong><code>memberships/members/&lt;id&gt;</code></strong></p>
+
 <p>This endpoint retrieves a specific user membership.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET http://example.com/api/wc/v2/memberships/members/&lt;id&gt;</code></p>
@@ -471,7 +591,7 @@
 <table><thead>
 <tr>
 <th>Parameter</th>
-<th>Value</th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
@@ -481,7 +601,130 @@
 <td>Integer matching the requested user membership ID.</td>
 </tr>
 </tbody></table>
-<h1 id='membership-plans'>Membership Plans</h1><h2 id='get-membership-plans'>Get Membership Plans</h2><pre class="highlight php tab-php"><code>// TODO
+<h1 id='membership-plans'>Membership Plans</h1><h2 id='the-membership-plan'>The Membership Plan</h2>
+<p>A membership plan is a collection of settings and conditions according to which customers can get access to restricted content, products, get member only discounts and so on.  </p>
+<h3 id='data-structure-2'>Data Structure</h3>
+<p>A membership plan has the following data structure in the REST API:</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int</code></td>
+<td>The unique identifier (integer) of the membership plan.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>The membership plan name.</td>
+</tr>
+<tr>
+<td><code>slug</code></td>
+<td><code>string</code></td>
+<td>The membership plan slug (a unique string identifier).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>The membership plan status (this usually matches standard WordPress post statuses, with <code>publish</code> or <code>draft</code> being the most common for plans).</td>
+</tr>
+<tr>
+<td><code>access_method</code></td>
+<td><code>string</code></td>
+<td>The method that membership plan prescribes for users to gain access.</td>
+</tr>
+<tr>
+<td><code>access_length_type</code></td>
+<td><code>string</code></td>
+<td>The access length type: specific (relative dates), fixed (fixed dates) or unlimited.</td>
+</tr>
+<tr>
+<td><code>access_length</code></td>
+<td><code>string</code></td>
+<td>The length in a human readable format (e.g. 2 weeks or 3 months, 1 year, etc.) that a user membership created for this plan will have, by default. This could be an empty string for unlimited memberships that have no set end (or may be tied to a subscription).</td>
+</tr>
+<tr>
+<td><code>access_length_seconds</code></td>
+<td><code>int&#124;null</code></td>
+<td>The equivalent in seconds of the access length, calculated by approximation in the site timezone. If the access length is nto set this will return <em><code>null</code></em>.</td>
+</tr>
+<tr>
+<td><code>access_length_seconds_gmt</code></td>
+<td><code>int&#124;null</code></td>
+<td>The equivalent in seconds of the access length, calculated by approximation in UTC. If the access length is nto set this will return <em><code>null</code></em>.</td>
+</tr>
+<tr>
+<td><code>access_product_ids</code></td>
+<td><code>int[]</code></td>
+<td>An optional array of product IDs (integers) to products that will grant access to the membership plan upon purchase. If no products grant access to the membership plan, the value will be an empty array.</td>
+</tr>
+<tr>
+<td><code>is_subscription_plan</code></td>
+<td><code>bool</code></td>
+<td>Whether the plan has at least one subscription among the products that can grant access. If Subscriptions is inactive this field will not exist.</td>
+</tr>
+<tr>
+<td><code>is_subscription_installment_plan</code></td>
+<td><code>bool</code></td>
+<td>Whether the plan uses the subscription for managing installment plans (the membership plan length is not directly tied to the subscription length). If Subscription is inactive this field will not exist.</td>
+</tr>
+<tr>
+<td><code>access_start_date</code></td>
+<td><code>datetime</code></td>
+<td>If the plan length type is based on fixed dates, this will be the date when any user membership will start, otherwise it will default to now, in the local timezone and in Atom format.</td>
+</tr>
+<tr>
+<td><code>access_start_date_gmt</code></td>
+<td><code>datetime</code></td>
+<td>If the plan length type is based on fixed dates, this will be the date when any user membership will start, otherwise it will default to now, in the UTC and in Atom format.</td>
+</tr>
+<tr>
+<td><code>access_end_date</code></td>
+<td><code>datetime</code></td>
+<td>If the plan length type is fixed this will be a fixed date when any membership will end, otherwise it will be a date calculated relatively to now, in the local timezone and in Atom format.</td>
+</tr>
+<tr>
+<td><code>access_end_date_gmt</code></td>
+<td><code>datetime</code></td>
+<td>If the plan length type is fixed this will be a fixed date when any membership will end, otherwise it will be a date calculated relatively to now, in UTC and in Atom format.</td>
+</tr>
+<tr>
+<td><code>date_created</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the membership plan object was created, in the local timezone.</td>
+</tr>
+<tr>
+<td><code>date_created_gmt</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the membership plan object was created, in UTC.</td>
+</tr>
+<tr>
+<td><code>date_modified</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the membership plan object was last modified, in the local timezone.</td>
+</tr>
+<tr>
+<td><code>date_modified_gmt</code></td>
+<td><code>datetime</code></td>
+<td>The date (in Atom format) when the membership plan object was last modified, in UTC.</td>
+</tr>
+<tr>
+<td><code>meta_data</code></td>
+<td><code>array</code></td>
+<td>Holds any WordPress meta data set on the plan. Each array item has an <code>id</code> (integer), a <code>key</code> (string) and a <code>value</code> (either a boolean, an integer, or string, or serialized data).</td>
+</tr>
+<tr>
+<td><code>links</code></td>
+<td><code>array</code></td>
+<td>An array of items linking to related objects accessible through the REST API.</td>
+</tr>
+</tbody></table>
+<h2 id='get-all-membership-plans'>Get All Membership Plans</h2><pre class="highlight php tab-php"><code>// TODO
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
 </code></pre>
 <blockquote>
@@ -534,6 +777,8 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
+<p><strong><code>/memberships/plans</code></strong></p>
+
 <p>This endpoint retrieves all membership plans.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET http://example.com/api/wc/v2/memberships/plans</code></p>
@@ -593,7 +838,7 @@
 <td>Ensure that the specified membership plans with given ID (integer) or IDs (array of integers) will be included in the results, if found.</td>
 </tr>
 </tbody></table>
-<h2 id='get-membership-plan'>Get Membership Plan</h2><pre class="highlight php tab-php"><code>// TODO
+<h2 id='get-one-membership-plan'>Get One Membership Plan</h2><pre class="highlight php tab-php"><code>// TODO
 </code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
 </code></pre>
 <blockquote>
@@ -644,6 +889,8 @@
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+<p><strong><code>/memberships/plans/&lt;id&gt;</code></strong></p>
+
 <p>This endpoint retrieves a specific membership plan.</p>
 <h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET http://example.com/api/wc/v2/memberships/plans/&lt;id&gt;</code></p>

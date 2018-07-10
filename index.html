@@ -1,0 +1,702 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>WooCommerce Memberships REST API Documentation</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .cd {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;php&quot;,&quot;ruby&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" alt="Navbar" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <div class="logo-wrapper"><img src="images/logo.png" class="logo" alt="Logo" /></div>
+        <div class="lang-selector">
+              <a href="#" data-language-name="php">php</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#discovery" class="toc-h1 toc-link" data-title="Discovery">Discovery</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#available-routes" class="toc-h2 toc-link" data-title="Available Routes">Available Routes</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#user-memberships" class="toc-h1 toc-link" data-title="User Memberships">User Memberships</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-user-memberships" class="toc-h2 toc-link" data-title="Get User Memberships">Get User Memberships</a>
+                  </li>
+                  <li>
+                    <a href="#get-user-membership" class="toc-h2 toc-link" data-title="Get User Membership">Get User Membership</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#membership-plans" class="toc-h1 toc-link" data-title="Membership Plans">Membership Plans</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-membership-plans" class="toc-h2 toc-link" data-title="Get Membership Plans">Get Membership Plans</a>
+                  </li>
+                  <li>
+                    <a href="#get-membership-plan" class="toc-h2 toc-link" data-title="Get Membership Plan">Get Membership Plan</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li><a href='https://woocommerce.com/products/woocommerce-memberships/'>Get WooCommerce Memberships</a></li>
+            <li><a href='https://docs.woocommerce.com/document/woocommerce-memberships/'>WooCommerce Memberships Documentation</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the <a href="https://woocommerce.com/products/woocommerce-memberships/">WooCommerce Memberships</a> REST API documentation! </p>
+
+<p>Memberships extends <a href="https://woocommerce.com/">WooCommerce</a> and builds upon the <a href="http://v2.wp-api.org/">WordPress REST API</a> to handle user memberships and memberships plans data through robust REST API endpoints.</p>
+
+<p>Memberships currently supports v2 of the WooCommerce REST API extension for WordPress, therefore all its endpoints will be added to the <code>/wc/v2/</code> route.</p>
+
+<p>This documentation showcases the available HTTP API methods and endpoints to perform valid requests, along with examples in PHP and Ruby.</p>
+
+<p>If you spot a typo, an error, have a question, want to provide feedback or extend the documentation, please refer to the <a href="https://github.com/skyverge/woocommerce-memberships-rest-api-docs">GitHub repository of this documentation</a>.</p>
+<h1 id='authentication'>Authentication</h1>
+<p>Since Memberships REST API is built on top of the WordPress REST API and requires WooCommerce to function, authorization for performing HTTP requests successfully is handled by WooCommerce and WordPress.  </p>
+
+<p>WooCommerce includes two ways to authenticate with the WP REST API. It is also possible to authenticate using any <a href="http://v2.wp-api.org/guide/authentication/">WP REST API authentication plugin</a> or method.</p>
+
+<p>Follow instructions from the <a href="https://woocommerce.github.io/woocommerce-rest-api-docs/#authentication">WooCommerce core REST API Authentication chapter</a> for authentication guidelines.</p>
+<h1 id='discovery'>Discovery</h1><h2 id='available-routes'>Available Routes</h2>
+<p>This endpoint lists all routes, along with supported HTTP methods for each, made available by WooCommerce Memberships.</p>
+<h3 id='http-request'>HTTP REQUEST</h3>
+<p><code>GET http://example.com/wp-json/wc/v2/memberships</code></p>
+<h1 id='user-memberships'>User Memberships</h1><h2 id='get-user-memberships'>Get User Memberships</h2><pre class="highlight php tab-php"><code>// TODO
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON data with an array of user memberships structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-07T00:10:40+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-06T16:10:40+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-06T00:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-05T16:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paused_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paused_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members/19"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/customers/80"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all user memberships.</p>
+<h3 id='http-request-2'>HTTP Request</h3>
+<p><code>GET http://example.com/api/wc/v2/memberships/members</code></p>
+<h3 id='query-parameters'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>customer</code></td>
+<td><code>int&#124;string</code></td>
+<td><em><code>null</code></em></td>
+<td>List user memberships belonging to a specific user, specified by ID (integer), email address or login name (string).</td>
+</tr>
+<tr>
+<td><code>order</code></td>
+<td><code>int</code></td>
+<td><em><code>null</code></em></td>
+<td>List user memberships created from a specific order, given by its ID (integer).</td>
+</tr>
+<tr>
+<td><code>plan</code></td>
+<td><code>int&#124;int[]&#124;string</code></td>
+<td><em><code>null</code></em></td>
+<td>List user memberships belonging to specific plan or plans. The passed value can be an integer (the plan ID), a string (the plan slug) or an array of IDs to specify different plans at once.</td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td><code>int</code></td>
+<td><em><code>null</code></em></td>
+<td>List user memberships created from the purchase of a specific product, given by its ID (integer).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td><code>any</code></td>
+<td>List user memberships with a specific status.  By default all memberships of any status are listed.</td>
+</tr>
+<tr>
+<td><code>subscription</code></td>
+<td><code>int</code></td>
+<td><em><code>null</code></em></td>
+<td>List user memberships associated with a specific subscription, given by its ID (integer).</td>
+</tr>
+</tbody></table>
+<h3 id='pagination-parameters'>Pagination Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Main pagination parameter (integer). Only a given number of user memberships will be listed at any time, per page, according to the site settings.</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td><code>int</code></td>
+<td><em><code>null</code></em></td>
+<td>The default number of results to return per page. The default value is normally set by WordPress own settings.</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Optional pagination parameter. If set will offset the results by the given number of user memberships specified (integer).</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td><code>int&#124;int[]</code></td>
+<td><em><code>null</code></em></td>
+<td>Ensure that the specified user memberships with given ID (integer) or IDs (array of integers) will be excluded from the results, if found.</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><code>int&#124;int[]</code></td>
+<td><em><code>null</code></em></td>
+<td>Ensure that the specified user memberships with given ID (integer) or IDs (array of integers) will be included in the results, if found.</td>
+</tr>
+</tbody></table>
+<h2 id='get-user-membership'>Get User Membership</h2><pre class="highlight php tab-php"><code>// TODO
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON data with a user membership structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">47</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-07T00:10:40+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"date_created_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-06T16:10:40+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-06T00:00:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"start_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-05T16:00:00+00:00"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"end_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paused_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"paused_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+  </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members/19"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+              </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/customers/80"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific user membership.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET http://example.com/api/wc/v2/memberships/members/&lt;id&gt;</code></p>
+<h3 id='url-parameters'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int</code></td>
+<td>Integer matching the requested user membership ID.</td>
+</tr>
+</tbody></table>
+<h1 id='membership-plans'>Membership Plans</h1><h2 id='get-membership-plans'>Get Membership Plans</h2><pre class="highlight php tab-php"><code>// TODO
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON data with an array of membership plans structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold Membership Plan"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gold-membership-plan"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"publish"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_length"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_length_seconds"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_length_seconds_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_product_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="mi">84</span><span class="p">,</span><span class="w">
+            </span><span class="mi">86</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"access_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-10T08:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_start_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-10T00:00:00+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"access_end_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-08T14:24:11+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-08T06:24:11+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-06T11:40:11+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_modified_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-06T03:40:11+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+        </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans/55"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">],</span><span class="w">
+            </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/84"</span><span class="w">
+
+                </span><span class="p">},</span><span class="w">
+                </span><span class="p">{</span><span class="w">
+                    </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/86"</span><span class="w">
+                </span><span class="p">}</span><span class="w">
+            </span><span class="p">]</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves all membership plans.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET http://example.com/api/wc/v2/memberships/plans</code></p>
+<h3 id='query-parameters-2'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td><code>publish</code></td>
+<td>List membership plans with a specific post status. By default only membership plans that have been publicly published are listed.</td>
+</tr>
+</tbody></table>
+<h3 id='pagination-parameters-2'>Pagination Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>page</code></td>
+<td><code>int</code></td>
+<td><code>1</code></td>
+<td>Main pagination parameter (integer). Only a given number of membership plans will be listed at any time, per page, according to the site settings.</td>
+</tr>
+<tr>
+<td><code>per_page</code></td>
+<td><code>int</code></td>
+<td><em><code>null</code></em></td>
+<td>The default number of results to return per page. The default value is normally set by WordPress own settings.</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><code>int</code></td>
+<td><code>0</code></td>
+<td>Optional pagination parameter. If set will offset the results by the given number of membership plans specified (integer).</td>
+</tr>
+<tr>
+<td><code>exclude</code></td>
+<td><code>int&#124;int[]</code></td>
+<td><em><code>null</code></em></td>
+<td>Ensure that the specified membership plans with given ID (integer) or IDs (array of integers) will be excluded from the results, if found.</td>
+</tr>
+<tr>
+<td><code>include</code></td>
+<td><code>int&#124;int[]</code></td>
+<td><em><code>null</code></em></td>
+<td>Ensure that the specified membership plans with given ID (integer) or IDs (array of integers) will be included in the results, if found.</td>
+</tr>
+</tbody></table>
+<h2 id='get-membership-plan'>Get Membership Plan</h2><pre class="highlight php tab-php"><code>// TODO
+</code></pre><pre class="highlight ruby tab-ruby"><code><span class="c1">## TODO</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON data with a membership plan structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Gold Membership Plan"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"slug"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gold-membership-plan"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"publish"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"purchase"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_length"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_length_seconds"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_length_seconds_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_product_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">84</span><span class="p">,</span><span class="w">
+        </span><span class="mi">86</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"access_start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-10T08:00:00+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_start_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-07-10T00:00:00+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_end_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"access_end_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-08T14:24:11+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-05-08T06:24:11+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_modified"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-06T11:40:11+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_modified_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2018-06-06T03:40:11+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans/55"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/84"</span><span class="w">
+
+            </span><span class="p">},</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/86"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific membership plan.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET http://example.com/api/wc/v2/memberships/plans/&lt;id&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int</code></td>
+<td>Integer matching the requested membership plan ID.</td>
+</tr>
+</tbody></table>
+<h1 id='errors'>Errors</h1>
+<table><thead>
+<tr>
+<th>Error Code</th>
+<th>Meaning</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>400</code></td>
+<td><strong>Bad Request</strong> -- Your request is invalid.</td>
+</tr>
+<tr>
+<td><code>401</code></td>
+<td><strong>Unauthorized</strong> -- Authentication error.</td>
+</tr>
+<tr>
+<td><code>404</code></td>
+<td><strong>Not Found</strong> -- The specified item could not be found.</td>
+</tr>
+<tr>
+<td><code>405</code></td>
+<td><strong>Method Not Allowed</strong> -- The HTTP method you used isn&#39;t supported by the specified endpoint.</td>
+</tr>
+<tr>
+<td><code>500</code></td>
+<td><strong>Internal Server Error</strong> -- Something may be wrong with the site.</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="php">php</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

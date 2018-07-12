@@ -2,9 +2,9 @@
 
 WooCommerce Memberships extends WooCommerce with custom webhooks that are triggered when changes occur to User Memberships or Membership Plan objects.
 
-## User Memberships
+## Membership Plan WebHooks
 
-Each of the following webhooks will send a corresponding [user membership object](/#the-user-membership) as payload.
+Each of the following webhooks will send a corresponding [user membership object](/woocommerce-memberships-rest-api-docs#the-user-membership) as payload.
 
 Name                          | Description
 ----------------------------- | ---------------------------------
@@ -13,9 +13,9 @@ Name                          | Description
 `user_membership.transferred` | Triggered when a user membership is transferred from a user to another (the user owner of the membership has changed).
 `user_membership.created`     | Triggered when a user membership has been permanently deleted.
 
-## Membership Plans
+## Membership Plan WebHooks
 
-Each of the following webhooks will send a corresponding [membership plan object](/#the-membership-plan) as payload.
+Each of the following webhooks will send a corresponding [membership plan object](/woocommerce-memberships-rest-api-docs#the-membership-plan) as payload.
 
 Name                          | Description
 ----------------------------- | ---------------------------------

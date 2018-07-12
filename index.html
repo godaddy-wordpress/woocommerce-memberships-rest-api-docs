@@ -262,6 +262,17 @@
               </ul>
           </li>
           <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="WebHooks">WebHooks</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#user-memberships" class="toc-h2 toc-link" data-title="User Memberships">User Memberships</a>
+                  </li>
+                  <li>
+                    <a href="#membership-plans" class="toc-h2 toc-link" data-title="Membership Plans">Membership Plans</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
           </li>
       </ul>
@@ -276,7 +287,7 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Welcome to the <a href="https://woocommerce.com/products/woocommerce-memberships/">WooCommerce Memberships</a> REST API documentation! </p>
 
-<p>Memberships extends <a href="https://woocommerce.com/">WooCommerce</a> and builds upon the <a href="http://v2.wp-api.org/">WordPress REST API</a> to handle user memberships and memberships plans data through robust REST API endpoints.</p>
+<p>Since version 1.11.0, Memberships extends <a href="https://woocommerce.com/">WooCommerce</a> and builds upon the <a href="http://v2.wp-api.org/">WordPress REST API</a> to handle user memberships and memberships plans data through robust REST API endpoints.</p>
 
 <p>Memberships currently supports v2 of the WooCommerce REST API extension for WordPress, therefore all its endpoints will be added to the <code>/wc/v2/</code> route.</p>
 
@@ -333,7 +344,7 @@
 <td>The unique identifier (integer) of the order that may have granted access to the matching membership plan. If the user membership is not linked to an order, it will return <em><code>null</code></em>.</td>
 </tr>
 <tr>
-<td><code>subcription_id</code></td>
+<td><code>subscription_id</code></td>
 <td><code>int&#124;null</code></td>
 <td>The unique identifier (integer) of a subscription that may be linked to the user membership. This property will exist only if the site is running WooCommerce Subscriptions alongside with Memberships. If there is no link to a subscription, the value will be <em><code>null</code></em>.</td>
 </tr>
@@ -906,6 +917,60 @@
 <td><code>id</code></td>
 <td><code>int</code></td>
 <td>Integer matching the requested membership plan ID.</td>
+</tr>
+</tbody></table>
+<h1 id='webhooks'>WebHooks</h1>
+<p>WooCommerce Memberships extends WooCommerce with custom webhooks that are triggered when changes occur to User Memberships or Membership Plan objects.</p>
+<h2 id='user-memberships'>User Memberships</h2>
+<p>Each of the following webhooks will send a corresponding <a href="/#the-user-membership">user membership object</a> as payload.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>user_membership.created</code></td>
+<td>Triggered when a user membership is created, via any means.</td>
+</tr>
+<tr>
+<td><code>user_membership.updated</code></td>
+<td>Triggered when a user membership is changed or modified (e.g. status change, update in admin, etc.).</td>
+</tr>
+<tr>
+<td><code>user_membership.transferred</code></td>
+<td>Triggered when a user membership is transferred from a user to another (the user owner of the membership has changed).</td>
+</tr>
+<tr>
+<td><code>user_membership.created</code></td>
+<td>Triggered when a user membership has been permanently deleted.</td>
+</tr>
+</tbody></table>
+<h2 id='membership-plans'>Membership Plans</h2>
+<p>Each of the following webhooks will send a corresponding <a href="/#the-membership-plan">membership plan object</a> as payload.</p>
+
+<table><thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>membership_plan.created</code></td>
+<td>Triggered when a membership plan has been created.</td>
+</tr>
+<tr>
+<td><code>membership_plan.updated</code></td>
+<td>Triggered when a membership plan has been updated (with one of its properties modified or just saved without data change).</td>
+</tr>
+<tr>
+<td><code>membership_plan.deleted</code></td>
+<td>Triggered when a membership plan has been moved to the trash (not permanently deleted, but assumed so unless restored).</td>
+</tr>
+<tr>
+<td><code>membership_plan.restored</code></td>
+<td>Triggered when a membership plan is moved back from the trash (not necessarily as published, could be in draft status or other status).</td>
 </tr>
 </tbody></table>
 <h1 id='errors'>Errors</h1>

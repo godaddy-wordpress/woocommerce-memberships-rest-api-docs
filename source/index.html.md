@@ -10,6 +10,7 @@ toc_footers:
   - <a href='https://docs.woocommerce.com/document/woocommerce-memberships/'>Plugin Documentation</a>
 
 includes:
+  - webhooks
   - errors
 
 search: true
@@ -19,7 +20,7 @@ search: true
 
 Welcome to the [WooCommerce Memberships](https://woocommerce.com/products/woocommerce-memberships/) REST API documentation! 
 
-Memberships extends [WooCommerce](https://woocommerce.com/) and builds upon the [WordPress REST API](http://v2.wp-api.org/) to handle user memberships and memberships plans data through robust REST API endpoints.
+Since version 1.11.0, Memberships extends [WooCommerce](https://woocommerce.com/) and builds upon the [WordPress REST API](http://v2.wp-api.org/) to handle user memberships and memberships plans data through robust REST API endpoints.
 
 Memberships currently supports v2 of the WooCommerce REST API extension for WordPress, therefore all its endpoints will be added to the `/wc/v2/` route.
 
@@ -64,7 +65,7 @@ Property             | Type                            | Description
 `plan_id`            | <code>int</code>                | The unique identifier (integer) of the membership plan the membership is for.
 `status`             | <code>string</code>             | The current status (string) of the user membership.
 `order_id`           | <code>int&#124;null</code>      | The unique identifier (integer) of the order that may have granted access to the matching membership plan. If the user membership is not linked to an order, it will return _`null`_.
-`subcription_id`     | <code>int&#124;null</code>      | The unique identifier (integer) of a subscription that may be linked to the user membership. This property will exist only if the site is running WooCommerce Subscriptions alongside with Memberships. If there is no link to a subscription, the value will be _`null`_.
+`subscription_id`    | <code>int&#124;null</code>      | The unique identifier (integer) of a subscription that may be linked to the user membership. This property will exist only if the site is running WooCommerce Subscriptions alongside with Memberships. If there is no link to a subscription, the value will be _`null`_.
 `product_id`         | <code>int&#124;null</code>      | The unique identifier (integer) of a product that may have granted access to the matching membership plan. If the user membership is not linked to a product, it will return _`null`_.
 `date_created`       | <code>datetime</code>           | The date (in Atom format) when the user membership object was created, in the local timezone. This does not necessarily match with the start date.
 `date_created_gmt`   | <code>datetime</code>           | The date (in Atom format) when the user membership object was created, in UTC. This does not necessarily match with the start date.

@@ -76,7 +76,8 @@ Property             | Type                            | Description
 `paused_date`        | <code>datetime&#124;null</code> | The date (in Atom format) when the membership was last paused, in the local timezone. This is `null` if the membership was never paused. The value is not removed if the membership changes status.
 `paused_date_gmt`    | <code>datetime&#124;null</code> | The date (in Atom format) when the membership was last paused, in UTC. This is `null` if the membership was never paused. The value is not removed if the membership changes status.
 `cancelled_date`     | <code>datetime&#124;null</code> | The date (in Atom format) when the membership was cancelled, in the local timezone. This is `null` if the membership was not cancelled. 
-`cancelled_date_gmt` | <code>datetime&#124;null</code> | The date (in Atom format) when the membership was cancelled, in UTC. This is `null` if the membership was not cancelled. 
+`cancelled_date_gmt` | <code>datetime&#124;null</code> | The date (in Atom format) when the membership was cancelled, in UTC. This is `null` if the membership was not cancelled.
+`view_url`           | <code>string</code>             | URL pointing to the site's Members Area accessible to the membership's owner.    
 `meta_data`          | <code>array</code>              | Holds any WordPress meta data set on the membership. Each array item has an `id` (integer), a `key` (string) and a `value` (either a boolean, an integer, or string, or serialized data).
 `links`              | <code>array</code>              | An array of items linking to related objects accessible through the REST API.   
 
@@ -111,6 +112,7 @@ Property             | Type                            | Description
         "paused_date_gmt": null,
         "cancelled_date": null,
         "cancelled_date_gmt": null,
+        "view_url": "http://skyverge.test/my-account/members-area/10/my-membership-content/",
         "meta_data": [],
         "_links": {
             "self": [
@@ -194,6 +196,7 @@ Parameter      | Type                                    | Default   | Descripti
   "paused_date_gmt": null,
   "cancelled_date": null,
   "cancelled_date_gmt": null,
+  "view_url": "http://skyverge.test/my-account/members-area/10/my-membership-content/",
   "meta_data": [],
   "_links": {
       "self": [

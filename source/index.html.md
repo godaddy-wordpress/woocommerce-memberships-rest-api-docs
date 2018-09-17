@@ -7,6 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
   - <a href='https://woocommerce.com/products/woocommerce-memberships/'>Get WooCommerce Memberships</a>
   - <a href='https://docs.woocommerce.com/document/woocommerce-memberships/'>Plugin Documentation</a>
+  - <a href='https://woocommerce.com/my-account/tickets/'>Support</a>
 
 includes:
   - introduction

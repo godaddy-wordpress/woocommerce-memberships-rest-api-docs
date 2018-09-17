@@ -39,7 +39,4 @@ Finally, after pushing changes and you are ready to deploy use the script:
 
 ```shell
 bash deploy.sh
-``` 
-
-
- 
+```

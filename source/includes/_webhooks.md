@@ -2,7 +2,7 @@
 
 WooCommerce Memberships extends WooCommerce with custom webhooks that are triggered when changes occur to User Memberships or Membership Plan objects.
 
-## Membership Plan WebHooks
+## User Membership WebHooks
 
 Each of the following webhooks will send a corresponding [user membership object](/woocommerce-memberships-rest-api-docs#the-user-membership) as payload.
 

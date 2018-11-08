@@ -132,7 +132,7 @@ $woocommerce->get( 'memberships/members/<id>' );
     ],
     "customer": [
       {
-        "href": "http://example.com/wp-json/wc/v2/customers/80"
+        "href": "http://example.com/wp-json/wc/v3/customers/80"
       }
     ]
   }

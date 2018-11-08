@@ -70,7 +70,7 @@ This endpoint retrieves all membership plans.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v2/memberships/plans`
+`GET http://example.com/api/wc/v3/memberships/plans`
 
 ### Query Parameters
 

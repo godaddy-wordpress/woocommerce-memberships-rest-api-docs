@@ -302,7 +302,7 @@ You will then need to configure and instantiate the client in your project, like
 </span>    <span class="s1">'consumer_secret'</span><span class="p">,</span>       <span class="c1">// Your consumer secret
 </span>    <span class="p">[</span>
         <span class="s1">'wp_api'</span>  <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">// Enable the WP REST API integration
-</span>        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/v2'</span> <span class="c1">// WooCommerce WP REST API version
+</span>        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/v3'</span> <span class="c1">// WooCommerce WP REST API version
 </span>    <span class="p">]</span>
 <span class="p">);</span>
 
@@ -312,7 +312,7 @@ You will then need to configure and instantiate the client in your project, like
 
 <p>Since version 1.11.0, Memberships extends <a href="https://woocommerce.com/">WooCommerce</a> and builds upon the <a href="http://v2.wp-api.org/">WordPress REST API</a> to handle user memberships and memberships plans data through robust REST API endpoints.</p>
 
-<p>Memberships currently supports v2 of the WooCommerce REST API extension for WordPress, therefore all its endpoints will be added to the <code>/wc/v2/</code> route.</p>
+<p>Memberships currently supports v2 and v3 (added in 1.12.0) of the WooCommerce REST API extension for WordPress. All its endpoints will be added to the <code>/wc/v2/</code> and <code>/wc/v3/</code> routes.</p>
 
 <p>This documentation showcases the available HTTP API methods and endpoints to perform valid requests, along with some examples in PHP.</p>
 
@@ -331,7 +331,7 @@ You will then need to configure and instantiate the client in your project, like
     <span class="s1">'consumer_secret'</span><span class="p">,</span>
     <span class="p">[</span>
         <span class="s1">'wp_api'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/v2'</span>
+        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/v3'</span>
     <span class="p">]</span>
 <span class="p">);</span>
 
@@ -357,7 +357,7 @@ Example for servers that not properly parse the Authorization header:
     <span class="s1">'consumer_secret'</span><span class="p">,</span>
     <span class="p">[</span>
         <span class="s1">'wp_api'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
-        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/v2'</span><span class="p">,</span>
+        <span class="s1">'version'</span> <span class="o">=&gt;</span> <span class="s1">'wc/v3'</span><span class="p">,</span>
         <span class="c1">// Force Basic Authentication as query string true and using under HTTPS
 </span>        <span class="s1">'query_string_auth'</span> <span class="o">=&gt;</span> <span class="kc">true</span> 
     <span class="p">]</span>
@@ -375,7 +375,7 @@ Example for servers that not properly parse the Authorization header:
 
 <p>The memberships root endpoint lists all routes, along with supported HTTP methods for each, made available by WooCommerce Memberships.</p>
 <h3 id='http-request'>HTTP REQUEST</h3>
-<p><code>GET http://example.com/wp-json/wc/v2/memberships</code></p>
+<p><code>GET http://example.com/wp-json/wc/v3/memberships</code></p>
 <h1 id='user-memberships'>User Memberships</h1><h2 id='the-user-membership'>The User Membership</h2>
 <p>A user membership is created when a customer gets access to a membership plan, therefore all user memberships are linked to one user and one membership plan only. Also, a membership has a status and a start date.  </p>
 <h3 id='data-structure'>Data Structure</h3>
@@ -526,17 +526,17 @@ Example for servers that not properly parse the Authorization header:
     </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members/19"</span><span class="w">
+          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/members/19"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members"</span><span class="w">
+          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/members"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/customers/80"</span><span class="w">
+          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/customers/80"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -547,7 +547,7 @@ Example for servers that not properly parse the Authorization header:
 
 <p>This endpoint retrieves all user memberships.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/wc/v2/memberships/members</code></p>
+<p><code>GET http://example.com/api/wc/v3/memberships/members</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -667,17 +667,17 @@ Example for servers that not properly parse the Authorization header:
   </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members/19"</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/members/19"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/members"</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/members"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/customers/80"</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/customers/80"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -687,7 +687,7 @@ Example for servers that not properly parse the Authorization header:
 
 <p>This endpoint retrieves a specific user membership.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/api/wc/v2/memberships/members/&lt;id&gt;</code></p>
+<p><code>GET http://example.com/api/wc/v3/memberships/members/&lt;id&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -890,20 +890,20 @@ Example for servers that not properly parse the Authorization header:
     </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans/55"</span><span class="w">
+          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/plans/55"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans"</span><span class="w">
+          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/plans"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">],</span><span class="w">
       </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/84"</span><span class="w">  
+          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/products/84"</span><span class="w">  
         </span><span class="p">},</span><span class="w">
         </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/86"</span><span class="w">
+          </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/products/86"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">]</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -914,7 +914,7 @@ Example for servers that not properly parse the Authorization header:
 
 <p>This endpoint retrieves all membership plans.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/wc/v2/memberships/plans</code></p>
+<p><code>GET http://example.com/api/wc/v3/memberships/plans</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -1012,20 +1012,20 @@ Example for servers that not properly parse the Authorization header:
   </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans/55"</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/plans/55"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/memberships/plans"</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/memberships/plans"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">],</span><span class="w">
     </span><span class="s2">"products"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/84"</span><span class="w">  
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/products/84"</span><span class="w">  
       </span><span class="p">},</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v2/products/86"</span><span class="w">
+        </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://example.com/wp-json/wc/v3/products/86"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1035,7 +1035,7 @@ Example for servers that not properly parse the Authorization header:
 
 <p>This endpoint retrieves a specific membership plan.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/api/wc/v2/memberships/plans/&lt;id&gt;</code></p>
+<p><code>GET http://example.com/api/wc/v3/memberships/plans/&lt;id&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>

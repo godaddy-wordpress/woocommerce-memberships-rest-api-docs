@@ -2,8 +2,10 @@
 
 Official repository for the documentation of the [WooCommerce Memberships](https://woocommerce.com/products/woocommerce-memberships/) REST API.
 
-> If you are looking for the general **plugin documentation**, [please follow this link](https://docs.woocommerce.com/document/woocommerce-memberships/).
+[Follow this link](https://skyverge.github.io/woocommerce-memberships-rest-api-docs/) to read the **REST API documentation**. 
 
+> If you are looking for the general **plugin documentation**, [please follow this link](https://docs.woocommerce.com/document/woocommerce-memberships/).
+  
 ## Contributing
 
 You can contribute to this documentation by:

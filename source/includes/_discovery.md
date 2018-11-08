@@ -8,4 +8,4 @@ The memberships root endpoint lists all routes, along with supported HTTP method
 
 ### HTTP REQUEST
 
-`GET http://example.com/wp-json/wc/v2/memberships`
+`GET http://example.com/wp-json/wc/v3/memberships`

@@ -43,20 +43,20 @@ $woocommerce->get( 'memberships/plans' );
     "_links": {
       "self": [
         {
-          "href": "http://example.com/wp-json/wc/v2/memberships/plans/55"
+          "href": "http://example.com/wp-json/wc/v3/memberships/plans/55"
         }
       ],
       "collection": [
         {
-          "href": "http://example.com/wp-json/wc/v2/memberships/plans"
+          "href": "http://example.com/wp-json/wc/v3/memberships/plans"
         }
       ],
       "products": [
         {
-          "href": "http://example.com/wp-json/wc/v2/products/84"  
+          "href": "http://example.com/wp-json/wc/v3/products/84"  
         },
         {
-          "href": "http://example.com/wp-json/wc/v2/products/86"
+          "href": "http://example.com/wp-json/wc/v3/products/86"
         }
       ]
     }
@@ -133,20 +133,20 @@ $woocommerce->get( 'memberships/plans/<id>' );
   "_links": {
     "self": [
       {
-        "href": "http://example.com/wp-json/wc/v2/memberships/plans/55"
+        "href": "http://example.com/wp-json/wc/v3/memberships/plans/55"
       }
     ],
     "collection": [
       {
-        "href": "http://example.com/wp-json/wc/v2/memberships/plans"
+        "href": "http://example.com/wp-json/wc/v3/memberships/plans"
       }
     ],
     "products": [
       {
-        "href": "http://example.com/wp-json/wc/v2/products/84"  
+        "href": "http://example.com/wp-json/wc/v3/products/84"  
       },
       {
-        "href": "http://example.com/wp-json/wc/v2/products/86"
+        "href": "http://example.com/wp-json/wc/v3/products/86"
       }
     ]
   }
@@ -159,7 +159,7 @@ This endpoint retrieves a specific membership plan.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v2/memberships/plans/<id>`
+`GET http://example.com/api/wc/v3/memberships/plans/<id>`
 
 ### URL Parameters
 

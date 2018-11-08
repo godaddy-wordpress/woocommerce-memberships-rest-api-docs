@@ -36,17 +36,17 @@ $woocommerce->get( 'memberships/members' );
     "_links": {
       "self": [
         {
-          "href": "http://example.com/wp-json/wc/v2/memberships/members/19"
+          "href": "http://example.com/wp-json/wc/v3/memberships/members/19"
         }
       ],
       "collection": [
         {
-          "href": "http://example.com/wp-json/wc/v2/memberships/members"
+          "href": "http://example.com/wp-json/wc/v3/memberships/members"
         }
       ],
       "customer": [
         {
-          "href": "http://example.com/wp-json/wc/v2/customers/80"
+          "href": "http://example.com/wp-json/wc/v3/customers/80"
         }
       ]
     }
@@ -60,7 +60,7 @@ This endpoint retrieves all user memberships.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v2/memberships/members`
+`GET http://example.com/api/wc/v3/memberships/members`
 
 ### Query Parameters
 
@@ -122,12 +122,12 @@ $woocommerce->get( 'memberships/members/<id>' );
   "_links": {
     "self": [
       {
-        "href": "http://example.com/wp-json/wc/v2/memberships/members/19"
+        "href": "http://example.com/wp-json/wc/v3/memberships/members/19"
       }
     ],
     "collection": [
       {
-        "href": "http://example.com/wp-json/wc/v2/memberships/members"
+        "href": "http://example.com/wp-json/wc/v3/memberships/members"
       }
     ],
     "customer": [
@@ -145,7 +145,7 @@ This endpoint retrieves a specific user membership.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v2/memberships/members/<id>`
+`GET http://example.com/api/wc/v3/memberships/members/<id>`
 
 ### URL Parameters
 

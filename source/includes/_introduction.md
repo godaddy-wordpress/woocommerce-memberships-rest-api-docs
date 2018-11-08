@@ -19,7 +19,7 @@ $woocommerce = new Client(
     'consumer_secret',       // Your consumer secret
     [
         'wp_api'  => true,   // Enable the WP REST API integration
-        'version' => 'wc/v2' // WooCommerce WP REST API version
+        'version' => 'wc/v3' // WooCommerce WP REST API version
     ]
 );
 
@@ -30,7 +30,7 @@ Welcome to the [WooCommerce Memberships](https://woocommerce.com/products/woocom
 
 Since version 1.11.0, Memberships extends [WooCommerce](https://woocommerce.com/) and builds upon the [WordPress REST API](http://v2.wp-api.org/) to handle user memberships and memberships plans data through robust REST API endpoints.
 
-Memberships currently supports v2 of the WooCommerce REST API extension for WordPress, therefore all its endpoints will be added to the `/wc/v2/` route.
+Memberships currently supports v2 and v3 (added in 1.12.0) of the WooCommerce REST API extension for WordPress. All its endpoints will be added to the `/wc/v2/` and `/wc/v3/` routes.
 
 This documentation showcases the available HTTP API methods and endpoints to perform valid requests, along with some examples in PHP.
 

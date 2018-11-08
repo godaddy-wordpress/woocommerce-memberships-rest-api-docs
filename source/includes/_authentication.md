@@ -15,7 +15,7 @@ $woocommerce = new Client(
     'consumer_secret',
     [
         'wp_api' => true,
-        'version' => 'wc/v2'
+        'version' => 'wc/v3'
     ]
 );
 
@@ -41,7 +41,7 @@ $woocommerce = new Client(
     'consumer_secret',
     [
         'wp_api' => true,
-        'version' => 'wc/v2',
+        'version' => 'wc/v3',
         // Force Basic Authentication as query string true and using under HTTPS
         'query_string_auth' => true 
     ]

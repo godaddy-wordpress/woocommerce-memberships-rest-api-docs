@@ -14,9 +14,12 @@ includes:
   - authentication
   - discovery
   - user_memberships
-  - user_memberships/get
+  - user_memberships/create
+  - user_memberships/read
+  - user_memberships/update
+  - user_memberships/delete
   - membership_plans
-  - membership_plans/get
+  - membership_plans/read
   - webhooks
   - errors
 

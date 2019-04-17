@@ -8,7 +8,7 @@ $woocommerce->get( 'memberships/plans' );
 ?>
 ```
 
-> The above command returns JSON data with an array of membership plans structured like this:
+> JSON response example for the above command, containing an array of membership plans data structured as follows:
 
 ```json
 [
@@ -99,7 +99,7 @@ $woocommerce->get( 'memberships/plans/<id>' );
 ?>
 ```
 
-> The above command returns JSON data with a membership plan structured like this:
+> JSON response example for the request:
 
 ```json
 {
@@ -161,7 +161,7 @@ This endpoint retrieves a specific membership plan.
 
 `GET http://example.com/api/wc/v3/memberships/plans/<id>`
 
-### URL Parameters
+### Available Parameters
 
 Parameter | Value             | Description
 --------- | ----------------- | ------------

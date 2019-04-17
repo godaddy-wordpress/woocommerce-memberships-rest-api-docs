@@ -1,4 +1,4 @@
-## Get All User Memberships
+## Get User Memberships
 
 ```php
 <?php 
@@ -8,8 +8,7 @@ $woocommerce->get( 'memberships/members' );
 ?>
 ```
 
-
-> The above command returns JSON data with an array of user memberships structured like this:
+> JSON response example for the above command, containing an array of memberships data structured as follows:
 
 ```json
 [
@@ -84,7 +83,7 @@ Parameter      | Type                                    | Default   | Descripti
 `include`      | <code>int&#124;int[]</code>             | _`null`_  | Ensure that the specified user memberships with given ID (integer) or IDs (array of integers) will be included in the results, if found.
 
 
-## Get One User Membership
+## Get a User Membership
 
 
 ```php
@@ -96,7 +95,7 @@ $woocommerce->get( 'memberships/members/<id>' );
 ?>
 ```
 
-> The above command returns JSON data with a user membership structured like this:
+> JSON response example for the request:
 
 ```json
 {
@@ -147,7 +146,7 @@ This endpoint retrieves a specific user membership.
 
 `GET http://example.com/api/wc/v3/memberships/members/<id>`
 
-### URL Parameters
+### Available Parameters
 
 Parameter | Type              | Description
 --------- | ----------------- | ------------

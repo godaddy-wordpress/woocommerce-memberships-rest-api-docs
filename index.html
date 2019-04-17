@@ -239,10 +239,19 @@
                     <a href="#the-user-membership" class="toc-h2 toc-link" data-title="The User Membership">The User Membership</a>
                   </li>
                   <li>
-                    <a href="#get-all-user-memberships" class="toc-h2 toc-link" data-title="Get All User Memberships">Get All User Memberships</a>
+                    <a href="#create-a-user-membership" class="toc-h2 toc-link" data-title="Create a User Membership">Create a User Membership</a>
                   </li>
                   <li>
-                    <a href="#get-one-user-membership" class="toc-h2 toc-link" data-title="Get One User Membership">Get One User Membership</a>
+                    <a href="#get-user-memberships" class="toc-h2 toc-link" data-title="Get User Memberships">Get User Memberships</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user-membership" class="toc-h2 toc-link" data-title="Get a User Membership">Get a User Membership</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-user-membership" class="toc-h2 toc-link" data-title="Update a User Membership">Update a User Membership</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-user-membership" class="toc-h2 toc-link" data-title="Delete a User Membership">Delete a User Membership</a>
                   </li>
               </ul>
           </li>
@@ -391,7 +400,7 @@ Example for servers that not properly parse the Authorization header:
 <tr>
 <td><code>id</code></td>
 <td><code>int</code></td>
-<td>The unique identifier (integer) of the user membership.</td>
+<td><em><code>read-only</code></em><br><br>The unique identifier (integer) of the user membership.</td>
 </tr>
 <tr>
 <td><code>customer_id</code></td>
@@ -414,29 +423,29 @@ Example for servers that not properly parse the Authorization header:
 <td>The unique identifier (integer) of the order that may have granted access to the matching membership plan. If the user membership is not linked to an order, it will return <em><code>null</code></em>.</td>
 </tr>
 <tr>
-<td><code>subscription_id</code></td>
-<td><code>int&#124;null</code></td>
-<td>The unique identifier (integer) of a subscription that may be linked to the user membership. This property will exist only if the site is running WooCommerce Subscriptions alongside with Memberships. If there is no link to a subscription, the value will be <em><code>null</code></em>.<sup><a href="#user-membership-data-subscriptions-inactive">1</a></sup></td>
-</tr>
-<tr>
 <td><code>product_id</code></td>
 <td><code>int&#124;null</code></td>
 <td>The unique identifier (integer) of a product that may have granted access to the matching membership plan. If the user membership is not linked to a product, it will return <em><code>null</code></em>.</td>
 </tr>
 <tr>
+<td><code>subscription_id</code></td>
+<td><code>int&#124;null</code></td>
+<td>The unique identifier (integer) of a subscription that may be linked to the user membership. This property will exist only if the site is running WooCommerce Subscriptions alongside with Memberships. If there is no link to a subscription, the value will be <em><code>null</code></em>.<sup><a href="#user-membership-data-subscriptions-inactive">1</a></sup></td>
+</tr>
+<tr>
 <td><code>date_created</code></td>
 <td><code>datetime</code></td>
-<td>The date (in Atom format) when the user membership object was created, in the local timezone. This does not necessarily match with the start date.</td>
+<td><em><code>read-only</code></em><br><br>The date (in Atom format) when the user membership object was created, in the local timezone. This does not necessarily match with the start date.</td>
 </tr>
 <tr>
 <td><code>date_created_gmt</code></td>
 <td><code>datetime</code></td>
-<td>The date (in Atom format) when the user membership object was created, in UTC. This does not necessarily match with the start date.</td>
+<td><em><code>read-only</code></em><br><br>The date (in Atom format) when the user membership object was created, in UTC. This does not necessarily match with the start date.</td>
 </tr>
 <tr>
 <td><code>start_date</code></td>
 <td><code>datetime</code></td>
-<td>The date (in Atom format) when the membership starts, in the local timezone.</td>
+<td><em><code>read-only</code></em><br><br>The date (in Atom format) when the membership starts, in the local timezone.</td>
 </tr>
 <tr>
 <td><code>start_date_gmt</code></td>
@@ -446,7 +455,7 @@ Example for servers that not properly parse the Authorization header:
 <tr>
 <td><code>end_date</code></td>
 <td><code>datetime&#124;null</code></td>
-<td>The date (in Atom format) when the ends, in the local timezone. This is <code>null</code> if the membership doesn&#39;t have an end date.</td>
+<td><em><code>read-only</code></em><br><br>The date (in Atom format) when the ends, in the local timezone. This is <code>null</code> if the membership doesn&#39;t have an end date.</td>
 </tr>
 <tr>
 <td><code>end_date_gmt</code></td>
@@ -456,12 +465,12 @@ Example for servers that not properly parse the Authorization header:
 <tr>
 <td><code>paused_date</code></td>
 <td><code>datetime&#124;null</code></td>
-<td>The date (in Atom format) when the membership was last paused, in the local timezone. This is <code>null</code> if the membership was never paused. The value is not removed if the membership changes status.</td>
+<td><em><code>read-only</code></em><br><br>The date (in Atom format) when the membership was last paused, in the local timezone. This is <code>null</code> if the membership was never paused. The value is not removed if the membership changes status.</td>
 </tr>
 <tr>
 <td><code>paused_date_gmt</code></td>
 <td><code>datetime&#124;null</code></td>
-<td>The date (in Atom format) when the membership was last paused, in UTC. This is <code>null</code> if the membership was never paused. The value is not removed if the membership changes status.</td>
+<td><em><code>read-only</code></em><br><br>The date (in Atom format) when the membership was last paused, in UTC. This is <code>null</code> if the membership was never paused. The value is not removed if the membership changes status.</td>
 </tr>
 <tr>
 <td><code>cancelled_date</code></td>
@@ -476,31 +485,153 @@ Example for servers that not properly parse the Authorization header:
 <tr>
 <td><code>view_url</code></td>
 <td><code>string</code></td>
-<td>URL pointing to the site&#39;s Members Area accessible to the membership&#39;s owner.</td>
+<td><em><code>read-only</code></em><br><br>URL pointing to the site&#39;s Members Area accessible to the membership&#39;s owner.</td>
 </tr>
 <tr>
 <td><code>meta_data</code></td>
-<td><code>array</code></td>
+<td><code>array&#124;object</code></td>
 <td>Holds any WordPress meta data set on the membership. Each array item has an &quot;id&quot; <em><code>(integer)</code></em>, a &quot;key&quot; <em><code>(string)</code></em> and a &quot;value&quot; (either a <em><code>boolean</code></em>, an <em><code>integer</code></em>, or <em><code>string</code></em>, which could also represent serialized data).</td>
 </tr>
 <tr>
 <td><code>links</code></td>
 <td><code>array</code></td>
-<td>An array of items linking to related objects accessible through the REST API.</td>
+<td><em><code>read-only</code></em><br><br>An array of items linking to related objects accessible through the REST API.</td>
 </tr>
 </tbody></table>
 
 <p><strong>Notes:</strong></p>
 
 <p><sup id="user-membership-data-subscriptions-inactive">1</sup> If WooCommerce Subscriptions is inactive this field will not exist.</p>
-<h2 id='get-all-user-memberships'>Get All User Memberships</h2><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> 
+<h2 id='create-a-user-membership'>Create a User Membership</h2><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> 
+
+<span class="nv">$user_membership_data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'customer_id'</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s1">'plan_id'</span> <span class="o">=&gt;</span> <span class="mi">222</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">post</span><span class="p">(</span> <span class="s1">'memberships/members'</span><span class="p">,</span> <span class="nv">$user_membership_data</span> <span class="p">);</span> 
+
+<span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>JSON response example for the above command containing user membership data for the newly created membership:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1203</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">222</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T17:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T09:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T17:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T09:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paused_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paused_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"view_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/my-account/members-area/222/my-membership-content/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/wp-json/wc/v3/memberships/members/1203"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/wp-json/wc/v3/memberships/members"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/wp-json/wc/v3/customers/1"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><code>memberships/members</code></strong></p>
+
+<p>Issue a <strong>POST</strong> request to this endpoint to create a new user membership.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>POST http://example.com/api/wc/v3/memberships/members</code></p>
+<h3 id='user-membership-properties'>User Membership properties</h3>
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>customer_id</code></td>
+<td><code>int</code></td>
+<td><strong>Required</strong>. ID of the customer that will become the owner of the user membership.</td>
+</tr>
+<tr>
+<td><code>plan_id</code></td>
+<td><code>int</code></td>
+<td><strong>Required</strong>. ID of the membership plan to grant access to.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td><em>Optional</em>. The initial status of the user membership to be created. Defaults to <em><code>active</code></em>.</td>
+</tr>
+<tr>
+<td><code>order_id</code></td>
+<td><code>int</code></td>
+<td><em>Optional</em>. The ID of the associated order that granted access.</td>
+</tr>
+<tr>
+<td><code>product_id</code></td>
+<td><code>int</code></td>
+<td><em>Optional</em>. The ID of the associated product that granted access.</td>
+</tr>
+<tr>
+<td><code>subscription_id</code></td>
+<td><code>int</code></td>
+<td><em>Optional</em>. The ID of the subscription the membership will be linked to.</td>
+</tr>
+<tr>
+<td><code>start_date_gmt</code></td>
+<td><code>datetime</code></td>
+<td><em>Optional</em>. The date when the membership has started, in UTC. Defaults to the present time when the request is issued.</td>
+</tr>
+<tr>
+<td><code>end_date_gmt</code></td>
+<td><code>datetime</code></td>
+<td><em>Optional</em>. The date when the membership will end, in UTC. If status is expired, defaults to the present time when the request is issued.</td>
+</tr>
+<tr>
+<td><code>paused_date_gmt</code></td>
+<td><code>datetime</code></td>
+<td><em>Optional</em>. The date when the membership has been paused since, in UTC. If status is paused, defaults to the present time when the request is issued.</td>
+</tr>
+<tr>
+<td><code>cancelled_date_gmt</code></td>
+<td><code>datetime</code></td>
+<td><em>Optional</em>. The date when the membership has been cancelled, in UTC. If status is cancelled, defaults to the present time when the request is issued.</td>
+</tr>
+<tr>
+<td><code>meta_data</code></td>
+<td><code>array</code></td>
+<td><em>Optional</em>. Pass any WordPress post meta data to be set on the membership. Each array item has an &quot;id&quot; <em><code>(integer)</code></em>, a &quot;key&quot; <em><code>(string)</code></em> and a &quot;value&quot; (either a <em><code>boolean</code></em>, an <em><code>integer</code></em>, or <em><code>string</code></em>, which could also represent serialized data).</td>
+</tr>
+</tbody></table>
+<h2 id='get-user-memberships'>Get User Memberships</h2><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> 
 
 <span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span> <span class="s1">'memberships/members'</span> <span class="p">);</span> 
 
 <span class="cp">?&gt;</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON data with an array of user memberships structured like this:</p>
+<p>JSON response example for the above command, containing an array of memberships data structured as follows:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -634,7 +765,7 @@ Example for servers that not properly parse the Authorization header:
 <td>Ensure that the specified user memberships with given ID (integer) or IDs (array of integers) will be included in the results, if found.</td>
 </tr>
 </tbody></table>
-<h2 id='get-one-user-membership'>Get One User Membership</h2><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> 
+<h2 id='get-a-user-membership'>Get a User Membership</h2><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> 
 
 <span class="c1">// replace &lt;id&gt; with the requested member ID
 </span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span> <span class="s1">'memberships/members/&lt;id&gt;'</span> <span class="p">);</span> 
@@ -642,7 +773,7 @@ Example for servers that not properly parse the Authorization header:
 <span class="cp">?&gt;</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON data with a user membership structured like this:</p>
+<p>JSON response example for the request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">19</span><span class="p">,</span><span class="w">
@@ -688,7 +819,7 @@ Example for servers that not properly parse the Authorization header:
 <p>This endpoint retrieves a specific user membership.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://example.com/api/wc/v3/memberships/members/&lt;id&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='available-parameters'>Available Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -700,6 +831,117 @@ Example for servers that not properly parse the Authorization header:
 <td><code>id</code></td>
 <td><code>int</code></td>
 <td>Integer matching the requested user membership ID.</td>
+</tr>
+</tbody></table>
+<h2 id='update-a-user-membership'>Update a User Membership</h2><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> 
+
+<span class="nv">$user_membership_data</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'status'</span> <span class="o">=&gt;</span> <span class="s1">'paused'</span><span class="p">,</span>
+<span class="p">];</span>
+
+<span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">put</span><span class="p">(</span> <span class="s1">'memberships/members'</span><span class="p">,</span> <span class="nv">$user_membership_data</span> <span class="p">);</span> 
+
+<span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>JSON response example:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1203</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">222</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"paused"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T17:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"date_created_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T09:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T17:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"start_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T09:51:02+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"end_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paused_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T18:05:18+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"paused_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T10:05:18+00:00"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"view_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/my-account/members-area/222/my-membership-content/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/wp-json/wc/v3/memberships/members/1203"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"collection"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/wp-json/wc/v3/memberships/members"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="s2">"customer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="s2">"href"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/wp-json/wc/v3/customers/1"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><code>memberships/members/&lt;id&gt;</code></strong></p>
+
+<p>Issue a <strong>PUT</strong> request to this endpoint to update an existing user membership. You can pass the same properties as when creating a user membership, to update them.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>PUT http://example.com/api/wc/v3/memberships/members/&lt;id&gt;</code></p>
+<h2 id='delete-a-user-membership'>Delete a User Membership</h2><pre class="highlight php tab-php"><code><span class="cp">&lt;?php</span> 
+
+<span class="c1">// replace &lt;id&gt; with the member ID to delete
+</span><span class="nv">$woocommerce</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span> <span class="s1">'memberships/members/&lt;id&gt;'</span><span class="p">,</span> <span class="p">[</span> <span class="s1">'force'</span> <span class="o">=&gt;</span> <span class="kc">true</span> <span class="p">]</span> <span class="p">);</span> 
+
+<span class="cp">?&gt;</span>
+</code></pre>
+<blockquote>
+<p>JSON response example for the request, containing a flag to confirm deletion and user membership data pertaining to the deleted user membership before the deletion was executed:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"deleted"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"previous"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">13</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"customer_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"plan_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">8</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"order_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"product_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">848</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"subscription_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1191</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T15:29:34+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"date_created_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T07:29:34+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T15:29:34+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"start_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-04-17T07:29:34+00:00"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"end_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paused_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"paused_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"view_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/my-account/members-area/13/my-membership-content/"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p><strong><code>memberships/members/&lt;id&gt;</code></strong></p>
+
+<p>Issue a <strong>DELETE</strong> request to this endpoint to permanently delete a user membership.</p>
+<h3 id='http-request'>HTTP Request</h3>
+<p><code>DELETE http://example.com/api/wc/v3/memberships/members/&lt;id&gt;</code></p>
+<h3 id='available-parameters'>Available Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>int</code></td>
+<td>Integer matching the user membership ID to delete.</td>
 </tr>
 </tbody></table>
 <h1 id='membership-plans'>Membership Plans</h1><h2 id='the-membership-plan'>The Membership Plan</h2>
@@ -856,7 +1098,7 @@ Example for servers that not properly parse the Authorization header:
 <span class="cp">?&gt;</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON data with an array of membership plans structured like this:</p>
+<p>JSON response example for the above command, containing an array of membership plans data structured as follows:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
@@ -979,7 +1221,7 @@ Example for servers that not properly parse the Authorization header:
 <span class="cp">?&gt;</span>
 </code></pre>
 <blockquote>
-<p>The above command returns JSON data with a membership plan structured like this:</p>
+<p>JSON response example for the request:</p>
 </blockquote>
 <pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w">
@@ -1036,7 +1278,7 @@ Example for servers that not properly parse the Authorization header:
 <p>This endpoint retrieves a specific membership plan.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET http://example.com/api/wc/v3/memberships/plans/&lt;id&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
+<h3 id='available-parameters'>Available Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>

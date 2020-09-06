@@ -31,6 +31,7 @@ $woocommerce->get( 'memberships/members' );
     "cancelled_date": null,
     "cancelled_date_gmt": null,
     "view_url": "http://skyverge.test/my-account/members-area/10/my-membership-content/",
+    "profile_fields": [],
     "meta_data": [],
     "_links": {
       "self": [
@@ -117,6 +118,7 @@ $woocommerce->get( 'memberships/members/<id>' );
   "cancelled_date": null,
   "cancelled_date_gmt": null,
   "view_url": "http://skyverge.test/my-account/members-area/10/my-membership-content/",
+  "profile_fields": [],
   "meta_data": [],
   "_links": {
     "self": [

@@ -17,7 +17,7 @@ You can contribute to this documentation by:
 
 ## Running locally
 
-### Vagrant
+### Natively
 
 ```shell
 bundle install
@@ -31,7 +31,7 @@ Then, to test changes locally run:
 bundle exec middleman server
 ```
 
-### Docker
+### Via Docker
 
 1. Build the docker image:
     ```shell

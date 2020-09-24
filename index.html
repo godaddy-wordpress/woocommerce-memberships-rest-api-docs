@@ -488,6 +488,11 @@ Example for servers that not properly parse the Authorization header:
 <td><em><code>read-only</code></em><br><br>URL pointing to the site&#39;s Members Area accessible to the membership&#39;s owner.</td>
 </tr>
 <tr>
+<td><code>profile_fields</code></td>
+<td><code>array&#124;object</code></td>
+<td>Holds any profile fields set on the membership. Each array item has a &quot;slug&quot; <em><code>(string)</code></em> and a &quot;value&quot; (either a <em><code>boolean</code></em>, an <em><code>integer</code></em>, <em><code>float</code></em>, <em><code>string</code></em>, or <em><code>array</code></em>).</td>
+</tr>
+<tr>
 <td><code>meta_data</code></td>
 <td><code>array&#124;object</code></td>
 <td>Holds any WordPress meta data set on the membership. Each array item has an &quot;id&quot; <em><code>(integer)</code></em>, a &quot;key&quot; <em><code>(string)</code></em> and a &quot;value&quot; (either a <em><code>boolean</code></em>, an <em><code>integer</code></em>, or <em><code>string</code></em>, which could also represent serialized data).</td>
@@ -535,6 +540,7 @@ Example for servers that not properly parse the Authorization header:
     </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"view_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/my-account/members-area/222/my-membership-content/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"profile_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -619,6 +625,11 @@ Example for servers that not properly parse the Authorization header:
 <td><em>Optional</em>. The date when the membership has been cancelled, in UTC. If status is cancelled, defaults to the present time when the request is issued.</td>
 </tr>
 <tr>
+<td><code>profile_fields</code></td>
+<td><code>array&#124;object</code></td>
+<td><em>Optional</em>. Pass any profile fields to be set on the membership. Each array item has a &quot;slug&quot; <em><code>(string)</code></em> and a &quot;value&quot; (either a <em><code>boolean</code></em>, an <em><code>integer</code></em>, <em><code>float</code></em>, <em><code>string</code></em>, or <em><code>array</code></em>).</td>
+</tr>
+<tr>
 <td><code>meta_data</code></td>
 <td><code>array</code></td>
 <td><em>Optional</em>. Pass any WordPress post meta data to be set on the membership. Each array item has an &quot;id&quot; <em><code>(integer)</code></em>, a &quot;key&quot; <em><code>(string)</code></em> and a &quot;value&quot; (either a <em><code>boolean</code></em>, an <em><code>integer</code></em>, or <em><code>string</code></em>, which could also represent serialized data).</td>
@@ -653,6 +664,7 @@ Example for servers that not properly parse the Authorization header:
     </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"view_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/my-account/members-area/10/my-membership-content/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"profile_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -794,6 +806,7 @@ Example for servers that not properly parse the Authorization header:
   </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="s2">"view_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/my-account/members-area/10/my-membership-content/"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"profile_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
   </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -865,6 +878,7 @@ Example for servers that not properly parse the Authorization header:
     </span><span class="s2">"cancelled_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"cancelled_date_gmt"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
     </span><span class="s2">"view_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://skyverge.test/my-account/members-area/222/my-membership-content/"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"profile_fields"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"meta_data"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
     </span><span class="s2">"_links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">

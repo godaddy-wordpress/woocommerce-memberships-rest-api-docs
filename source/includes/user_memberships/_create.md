@@ -35,6 +35,7 @@ $woocommerce->post( 'memberships/members', $user_membership_data );
     "cancelled_date": null,
     "cancelled_date_gmt": null,
     "view_url": "http://skyverge.test/my-account/members-area/222/my-membership-content/",
+    "profile_fields": [],
     "meta_data": [],
     "_links": {
         "self": [
@@ -78,5 +79,6 @@ Attribute            | Type                            | Description
 `end_date_gmt`       | <code>datetime</code>           | _Optional_. The date when the membership will end, in UTC. If status is expired, defaults to the present time when the request is issued.
 `paused_date_gmt`    | <code>datetime</code>           | _Optional_. The date when the membership has been paused since, in UTC. If status is paused, defaults to the present time when the request is issued.
 `cancelled_date_gmt` | <code>datetime</code>           | _Optional_. The date when the membership has been cancelled, in UTC. If status is cancelled, defaults to the present time when the request is issued.
+`profile_fields`     | <code>array&#124;object</code>  | _Optional_. Pass any profile fields to be set on the membership. Each array item has a "slug" _`(string)`_ and a "value" (either a _`boolean`_, an _`integer`_, _`float`_, _`string`_, or _`array`_).
 `meta_data`          | <code>array</code>              | _Optional_. Pass any WordPress post meta data to be set on the membership. Each array item has an "id" _`(integer)`_, a "key" _`(string)`_ and a "value" (either a _`boolean`_, an _`integer`_, or _`string`_, which could also represent serialized data).
 

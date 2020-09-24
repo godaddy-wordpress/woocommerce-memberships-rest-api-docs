@@ -1,12 +1,12 @@
-# WooCommerce Memberships REST API documentation
+## WooCommerce Memberships REST API documentation 
 
-Official repository for the documentation of the [WooCommerce Memberships](https://woocommerce.com/products/woocommerce-memberships/) REST API.
+_Official repository for the documentation of the [WooCommerce Memberships](https://woocommerce.com/products/woocommerce-memberships/) REST API._
 
 [Follow this link](https://skyverge.github.io/woocommerce-memberships-rest-api-docs/) to read the **REST API documentation**. 
 
 > If you are looking for the general **plugin documentation**, [please follow this link](https://docs.woocommerce.com/document/woocommerce-memberships/).
   
-## Contributing
+### Contributing
 
 You can contribute to this documentation by:
 
@@ -15,9 +15,9 @@ You can contribute to this documentation by:
 
 > Please **do not submit feature requests or support requests for the REST API** here. You can use the [WooIdeas board](http://ideas.woocommerce.com/forums/133476-woocommerce?category_id=125014) or [Contact SkyVerge support](https://www.skyverge.com/support/).
 
-## Running locally
+### Running locally
 
-### Natively
+#### Natively
 
 ```shell
 bundle install
@@ -31,7 +31,7 @@ Then, to test changes locally run:
 bundle exec middleman server
 ```
 
-### Via Docker
+#### Via Docker
 
 1. Build the docker image:
     ```shell
@@ -49,15 +49,21 @@ To build your sources while the container is running, run:
 docker exec -it docs /bin/bash -c "bundle exec middleman build"
 ```
 
-## Updating pages
+### Updating pages
 
 This project uses [Slate](https://github.com/lord/slate) for building the documentation pages.
 
 Follow [Slate readme](https://github.com/lord/slate/blob/master/README.md) and [wiki](https://github.com/lord/slate/wiki) for instructions on how to edit files and make changes.
 
-## Deploying an update 
+### Deploying an update 
 
-After pushing changes and you are ready to deploy use the script:
+#### GitHub Action
+
+A `deploy` GitHub action is triggered automatically when changes are pushed to `main` or `master` branches. No manual action is normally required.
+
+#### Deploy script
+
+If the GitHub action fails, after pushing changes, you can deploy using the script:
 
 ```shell
 bash deploy.sh

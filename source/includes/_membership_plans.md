@@ -35,7 +35,7 @@ Property                             | Type                                    |
 `date_modified`                      | <code>datetime</code>                   | The date (in Atom format) when the membership plan object was last modified, in the local timezone.
 `date_modified_gmt`                  | <code>datetime</code>                   | The date (in Atom format) when the membership plan object was last modified, in UTC.
 `meta_data`                          | <code>array</code>                      | Holds any WordPress meta data set on the plan. Each array item has an "id" _`(integer)`_, a "key" _`(string)`_ and a "value" (either a _`boolean`_, an _`integer`_, or _`string`_, which could also represent serialized data).
-`links`                              | <code>array</code>                      | An array of items linking to related objects accessible through the REST API.   
+`_links`                              | <code>array</code>                      | An array of items linking to related objects accessible through the REST API.   
 
 
 **Notes:**

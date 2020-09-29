@@ -30,7 +30,7 @@ Property             | Type                            | Description
 `view_url`           | <code>string</code>             | _`read-only`_<br><br>URL pointing to the site's Members Area accessible to the membership's owner.    
 `profile_fields`     | <code>array&#124;object</code>  | Holds any profile fields set on the membership. Each array item has a "slug" _`(string)`_ and a "value" (either a _`boolean`_, an _`integer`_, _`float`_, _`string`_, or _`array`_).
 `meta_data`          | <code>array&#124;object</code>  | Holds any WordPress meta data set on the membership. Each array item has an "id" _`(integer)`_, a "key" _`(string)`_ and a "value" (either a _`boolean`_, an _`integer`_, or _`string`_, which could also represent serialized data).
-`_links`              | <code>array</code>              | _`read-only`_<br><br>An array of items linking to related objects accessible through the REST API.   
+`_links`             | <code>array</code>              | _`read-only`_<br><br>An array of items linking to related objects accessible through the REST API.   
 
 
 **Notes:**

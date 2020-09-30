@@ -44,7 +44,7 @@ Issue a **DELETE** request to this endpoint to permanently delete a user members
 
 ### HTTP Request
 
-`DELETE http://example.com/api/wc/v3/memberships/members/<id>`
+`DELETE http://example.com/wp-json/wc/v3/memberships/members/<id>`
 
 ### Available Parameters
 

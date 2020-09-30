@@ -70,7 +70,7 @@ This endpoint retrieves all membership plans.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/plans`
+`GET http://example.com/wp-json/wc/v3/memberships/plans`
 
 ### Query Parameters
 
@@ -159,7 +159,7 @@ This endpoint retrieves a specific membership plan.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/plans/<id>`
+`GET http://example.com/wp-json/wc/v3/memberships/plans/<id>`
 
 ### Available Parameters
 

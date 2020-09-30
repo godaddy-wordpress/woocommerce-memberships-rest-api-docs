@@ -63,7 +63,7 @@ Issue a **POST** request to this endpoint to create a new user membership.
 
 ### HTTP Request
 
-`POST http://example.com/api/wc/v3/memberships/members`
+`POST http://example.com/wp-json/wc/v3/memberships/members`
 
 ### User Membership properties
 

@@ -60,7 +60,7 @@ This endpoint retrieves all user memberships.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/members`
+`GET http://example.com/wp-json/wc/v3/memberships/members`
 
 ### Query Parameters
 
@@ -146,7 +146,7 @@ This endpoint retrieves a specific user membership.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/members/<id>`
+`GET http://example.com/wp-json/wc/v3/memberships/members/<id>`
 
 ### Available Parameters
 

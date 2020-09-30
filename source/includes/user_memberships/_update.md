@@ -62,4 +62,4 @@ Issue a **PUT** request to this endpoint to update an existing user membership. 
 
 ### HTTP Request
 
-`PUT http://example.com/api/wc/v3/memberships/members/<id>`
+`PUT http://example.com/wp-json/wc/v3/memberships/members/<id>`

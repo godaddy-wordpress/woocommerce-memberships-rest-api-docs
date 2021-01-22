@@ -20,10 +20,10 @@ $woocommerce->get( 'memberships/members' );
     "order_id": 47,
     "product_id": 55,
     "subscription_id": null,
-    "date_created": "2018-07-07T00:10:40+00:00",
-    "date_created_gmt": "2018-07-06T16:10:40+00:00",
-    "start_date": "2018-07-06T00:00:00+00:00",
-    "start_date_gmt": "2018-07-05T16:00:00+00:00",
+    "date_created": "2018-07-07T00:10:40",
+    "date_created_gmt": "2018-07-06T16:10:40",
+    "start_date": "2018-07-06T00:00:00",
+    "start_date_gmt": "2018-07-05T16:00:00",
     "end_date": null,
     "end_date_gmt": null,
     "paused_date": null,
@@ -60,7 +60,7 @@ This endpoint retrieves all user memberships.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/members`
+`GET http://example.com/wp-json/wc/v3/memberships/members`
 
 ### Query Parameters
 
@@ -107,10 +107,10 @@ $woocommerce->get( 'memberships/members/<id>' );
   "order_id": 47,
   "product_id": 55,
   "subscription_id": null,
-  "date_created": "2018-07-07T00:10:40+00:00",
-  "date_created_gmt": "2018-07-06T16:10:40+00:00",
-  "start_date": "2018-07-06T00:00:00+00:00",
-  "start_date_gmt": "2018-07-05T16:00:00+00:00",
+  "date_created": "2018-07-07T00:10:40",
+  "date_created_gmt": "2018-07-06T16:10:40",
+  "start_date": "2018-07-06T00:00:00",
+  "start_date_gmt": "2018-07-05T16:00:00",
   "end_date": null,
   "end_date_gmt": null,
   "paused_date": null,
@@ -146,7 +146,7 @@ This endpoint retrieves a specific user membership.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/members/<id>`
+`GET http://example.com/wp-json/wc/v3/memberships/members/<id>`
 
 ### Available Parameters
 

@@ -35,10 +35,10 @@ $woocommerce->get( 'memberships/plans' );
     "subscription_access_start_date_gmt": null,
     "subscription_access_end_date": null,
     "subscription_access_end_date_gmt": null,
-    "date_created": "2018-05-17T13:06:36+00:00",
-    "date_created_gmt": "2018-05-17T05:06:36+00:00",
-    "date_modified": "2018-08-24T16:15:26+00:00",
-    "date_modified_gmt": "2018-08-24T08:15:26+00:00",
+    "date_created": "2018-05-17T13:06:36",
+    "date_created_gmt": "2018-05-17T05:06:36",
+    "date_modified": "2018-08-24T16:15:26",
+    "date_modified_gmt": "2018-08-24T08:15:26",
     "meta_data": [],
     "_links": {
       "self": [
@@ -70,7 +70,7 @@ This endpoint retrieves all membership plans.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/plans`
+`GET http://example.com/wp-json/wc/v3/memberships/plans`
 
 ### Query Parameters
 
@@ -125,10 +125,10 @@ $woocommerce->get( 'memberships/plans/<id>' );
   "subscription_access_start_date_gmt": null,
   "subscription_access_end_date": null,
   "subscription_access_end_date_gmt": null,
-  "date_created": "2018-05-17T13:06:36+00:00",
-  "date_created_gmt": "2018-05-17T05:06:36+00:00",
-  "date_modified": "2018-08-24T16:15:26+00:00",
-  "date_modified_gmt": "2018-08-24T08:15:26+00:00",
+  "date_created": "2018-05-17T13:06:36",
+  "date_created_gmt": "2018-05-17T05:06:36",
+  "date_modified": "2018-08-24T16:15:26",
+  "date_modified_gmt": "2018-08-24T08:15:26",
   "meta_data": [],
   "_links": {
     "self": [
@@ -159,7 +159,7 @@ This endpoint retrieves a specific membership plan.
 
 ### HTTP Request
 
-`GET http://example.com/api/wc/v3/memberships/plans/<id>`
+`GET http://example.com/wp-json/wc/v3/memberships/plans/<id>`
 
 ### Available Parameters
 

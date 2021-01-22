@@ -24,10 +24,10 @@ $woocommerce->post( 'memberships/members', $user_membership_data );
     "order_id": null,
     "product_id": null,
     "subscription_id": null,
-    "date_created": "2019-04-17T17:51:02+00:00",
-    "date_created_gmt": "2019-04-17T09:51:02+00:00",
-    "start_date": "2019-04-17T17:51:02+00:00",
-    "start_date_gmt": "2019-04-17T09:51:02+00:00",
+    "date_created": "2019-04-17T17:51:02",
+    "date_created_gmt": "2019-04-17T09:51:02",
+    "start_date": "2019-04-17T17:51:02",
+    "start_date_gmt": "2019-04-17T09:51:02",
     "end_date": null,
     "end_date_gmt": null,
     "paused_date": null,
@@ -63,7 +63,7 @@ Issue a **POST** request to this endpoint to create a new user membership.
 
 ### HTTP Request
 
-`POST http://example.com/api/wc/v3/memberships/members`
+`POST http://example.com/wp-json/wc/v3/memberships/members`
 
 ### User Membership properties
 

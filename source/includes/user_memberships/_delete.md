@@ -22,10 +22,10 @@ $woocommerce->delete( 'memberships/members/<id>', [ 'force' => true ] );
         "order_id": 1200,
         "product_id": 848,
         "subscription_id": 1191,
-        "date_created": "2019-04-17T15:29:34+00:00",
-        "date_created_gmt": "2019-04-17T07:29:34+00:00",
-        "start_date": "2019-04-17T15:29:34+00:00",
-        "start_date_gmt": "2019-04-17T07:29:34+00:00",
+        "date_created": "2019-04-17T15:29:34",
+        "date_created_gmt": "2019-04-17T07:29:34",
+        "start_date": "2019-04-17T15:29:34",
+        "start_date_gmt": "2019-04-17T07:29:34",
         "end_date": null,
         "end_date_gmt": null,
         "paused_date": null,
@@ -44,7 +44,7 @@ Issue a **DELETE** request to this endpoint to permanently delete a user members
 
 ### HTTP Request
 
-`DELETE http://example.com/api/wc/v3/memberships/members/<id>`
+`DELETE http://example.com/wp-json/wc/v3/memberships/members/<id>`
 
 ### Available Parameters
 

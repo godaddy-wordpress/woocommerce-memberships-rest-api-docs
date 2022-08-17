@@ -34,5 +34,5 @@ Memberships currently supports v2 and v3 (added in 1.12.0) of the WooCommerce RE
 
 This documentation showcases the available HTTP API methods and endpoints to perform valid requests, along with some examples in PHP.
 
-If you spot a typo, an error, have a question, want to provide feedback or extend the documentation, please refer to the [GitHub repository of this documentation](https://github.com/skyverge/woocommerce-memberships-rest-api-docs).
+If you spot a typo, an error, have a question, want to provide feedback or extend the documentation, please refer to the [GitHub repository of this documentation](https://github.com/godaddy-wordpress/woocommerce-memberships-rest-api-docs).
 

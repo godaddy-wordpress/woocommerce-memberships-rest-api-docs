@@ -2,7 +2,7 @@
 
 _Official repository for the documentation of the [WooCommerce Memberships](https://woocommerce.com/products/woocommerce-memberships/) REST API._
 
-[Follow this link](https://skyverge.github.io/woocommerce-memberships-rest-api-docs/) to read the **REST API documentation**. 
+[Follow this link](https://godaddy-wordpress.github.io/woocommerce-memberships-rest-api-docs/) to read the **REST API documentation**. 
 
 > If you are looking for the general **plugin documentation**, [please follow this link](https://docs.woocommerce.com/document/woocommerce-memberships/).
   
@@ -10,7 +10,7 @@ _Official repository for the documentation of the [WooCommerce Memberships](http
 
 You can contribute to this documentation by:
 
-* [Opening an issue](https://github.com/skyverge/woocommerce-memberships-rest-api-docs/issues/new) to report a problem or information missing, etc.
+* [Opening an issue](https://github.com/godaddy-wordpress/woocommerce-memberships-rest-api-docs/issues/new) to report a problem or information missing, etc.
 * Opening a pull request to extend the documentation.
 
 > Please **do not submit feature requests or support requests for the REST API** here. You can use the [WooIdeas board](http://ideas.woocommerce.com/forums/133476-woocommerce?category_id=125014) or [Contact SkyVerge support](https://www.skyverge.com/support/).
